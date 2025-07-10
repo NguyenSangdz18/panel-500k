@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel FF</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="panel-square">
+    <div class="panel-content">
+      <div class="rainbow-text">𝙋𝘼𝙉𝙀𝙇</div>
+
+      <div class="time-line">
+        <div id="timeVN"></div>
+        <div class="name-text">@MinhQuanios</div>
+      </div>
+
+      <div class="option">
+        <span>REGEDIT V1</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="option">
+        <span>Dpi Config</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="option">
+        <span>Sensi X</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="option">
+        <span>Aimlock V1</span>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+
+      <div class="slider-container">
+        <span class="slider-label">Độ nhạy: <span id="percent">50%</span></span>
+        <input type="range" min="1" max="100" value="50" class="range-slider" id="sensitivityRange">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', hour12: false };
+      const hours = now.toLocaleTimeString('vi-VN', options);
+      document.getElementById('timeVN').innerText = hours;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    const range = document.getElementById('sensitivityRange');
+    const percentText = document.getElementById('percent');
+    range.addEventListener('input', function() {
+      percentText.textContent = this.value + '%';
+    });
+  </script>
+</body>
+</html>
